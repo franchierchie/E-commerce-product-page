@@ -1,0 +1,72 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin phone {
+    @media (min-width: v.$phone) {
+        @content;
+    }
+}
+@mixin max-phone {
+    @media (max-width: v.$phone) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+
+@mixin button($bgColor, $width, $border, $borderRadius) {
+    background-color: $bgColor;
+    width: $width;
+    border: $border;
+    border-radius: $borderRadius;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/*
+    display: flex;                      position: absolute;
+    align-items: center;                top: 50%;
+    justify-content: center;            border: 0;
+    width: 100%;                        background-color: v.$white;
+    font-weight: v.$w-bold;             border-radius: 50%;
+    background-color: v.$orange;        width: 3rem;
+    color: v.$white;                    aspect-ratio: 1 / 1;
+    border: 0;                          display: flex;
+    border-radius: .5rem;               align-items: center;
+    height: 4rem;                       padding: 1.1rem;
+
+    background-color: transparent;      border: 0;
+    border: 0;                          background-color: transparent;
+    width: 2rem;                        position: relative;
+    aspect-ratio: 1 / 1;                width: 2rem;
+    margin-inline-start: 32.5rem;       aspect-ratio: 1 / 1;
+
+    grid-row: 1 / 2;                    background-color: v.$orange;
+    grid-column: 1 / 2;                 color: v.$white;
+    background-color: transparent;      border-radius: .5rem;
+    border: 0;                          border: 0;
+    width: 1.5rem;                      width: 100%;
+    aspect-ratio: 1 / 1;                margin-block-start: 1rem;
+    background-repeat: no-repeat;       padding-block: 1.25rem;
+    background-size: cover;             font-weight: v.$w-bold;
+    top: 2.4rem;
+    left: 2rem;
+    z-index: 9999;
+*/
+
+@mixin grid($columns, $gap ) {
+    display: grid;
+    gap: $gap;
+    grid-template-columns: repeat($columns, 1fr);
+}

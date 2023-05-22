@@ -1,0 +1,22 @@
+@use 'variables' as v;
+
+h1, h2, p, li, a {
+    color: v.$black;
+}
+
+h1, h2 {
+    font-family: v.$main-font;
+    font-weight: v.$w-bold;
+}
+
+h1 {
+    font-size: calc(v.$f-size + 1.25rem);
+}
+
+h2 {
+    font-size: calc(v.$f-size + .05rem);
+}
+
+p {
+    font-size: v.$f-size;
+}

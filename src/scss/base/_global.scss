@@ -1,0 +1,45 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    width: clamp(400px, 100%, 1200px);
+    margin-inline: auto;
+}
+
+.img-active {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-color: transparentize(v.$white, .35);
+        border: 3px solid v.$orange;
+        border-radius: 1rem;
+        z-index: 8000;
+        cursor: pointer;
+        // background-color: red;       //! si pones esto + lo que esta comentado en la clase .thumbnail (_product-image.scss), podes ver el background-color ( para q cuando abris la foto, se transparente pero no veas el fondo )
+        // z-index: 1000;
+    }
+}

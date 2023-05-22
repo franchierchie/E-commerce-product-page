@@ -1,0 +1,119 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.images-container {
+
+    .image-container {
+        position: relative;
+
+        .img-btn {
+            @include m.button(v.$white, 3rem, 0, 50%);
+            position: absolute;
+            top: 50%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem;
+        }
+
+        .btn-previous {
+            left: 20px;
+        }
+
+        .btn-next {
+            right: 20px;
+        }
+    }
+
+    .product-thumbnails {
+        display: none;
+    }
+}
+
+@include m.desktop {
+
+    .images-container {
+
+        .image-container {
+
+            .img-btn {
+                display: none;
+            }
+
+            .product-image {
+                max-width: 35rem;
+                border-radius: 1rem;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 1.7rem;
+            margin-block-start: 2rem;
+
+            .thumbnail img {
+                width: 7.5rem;
+                aspect-ratio: 1 / 1;
+                border-radius: 1rem;
+                position: relative;
+                z-index: 7000;
+                transition: .3s;
+
+                &:hover {
+                    opacity: 50%;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .image-open {
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        background-color: transparentize(v.$black, .3);
+        width: 100%;
+        height: 100vmax;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding-block-start: 5rem;
+
+        .close-btn {
+            @include m.button(transparent, 2rem, 0, null);
+            aspect-ratio: 1 / 1;
+            margin-inline-start: 32.5rem;
+
+            img {
+                display: block;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+            }
+
+            &:hover {
+                img {
+                    filter: brightness(0) saturate(100%) invert(68%) sepia(63%) saturate(4453%) hue-rotate(347deg) brightness(100%) contrast(102%);
+                }
+            }
+        }
+
+        .images-container {
+            width: auto;
+
+            .image-container .img-btn {
+                display: flex;
+            }
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
